@@ -1,86 +1,73 @@
-       <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Happy Birthday 🎉صَحِیفَہ</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <h1>🎂 Happy Birthday! Sahifa..🥰🥰 🎂</h1>
-      <p class="small-text">A special surprise just for you…maa🥰</p>
-  <link rel="stylesheet" href="style.css" />
+  <title>Happy Birthday 🎁 Sahifa..🥰🥰 🎂</title>
+  <link rel="stylesheet" href="rio.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+  <div class="container">
+    <h1 class="title">Happy Birthday Syeda🩷🥰 🎉</h1>
 
-  <!-- Background music (put song.mp3 in same folder) -->
-  <audio id="bg-music" src="khoobsurat.mp3"></audio>
-
-  <!-- Hidden checkbox to control open/close of gift -->
-  <input type="checkbox" id="open-gift" class="hidden-checkbox" />
-
-  <div class="page">
-
-    <!-- Floating balloons -->
-    <div class="balloon balloon-1"></div>
-    <div class="balloon balloon-2"></div>
-    <div class="balloon balloon-3"></div>
-
-    <div class="card">
-
-      <!-- TWO IMAGES -->
-      <div class="photos-row">
-        <div class="photo-container">
-          <!-- Birthday girl photo -->
-          <img src="syeda2.jpg" class="girl-photo" alt="Photo 1" />
-        </div>
-
-        <div class="photo-container">
-          <!-- Your photo or second pic -->
-          <img src="syeda1.jpg" class="girl-photo" alt="Photo 2" />
-        </div>
-      </div>
-
-      
-
-      <!-- Gift box (also starts music on click) -->
-      <label for="open-gift" class="gift-box" onclick="playMusic()">
-        <div class="lid"></div>
-        <div class="box"></div>
+    <div class="gift-scene">
+      <!-- Gift box -->
+      <div class="gift-box" id="giftBox">
+        <div class="box-lid"></div>
+        <div class="box-body"></div>
+        <div class="ribbon-vertical"></div>
+        <div class="ribbon-horizontal"></div>
         <span class="tap-text">Tap to open 🎁</span>
-      </label>
-
-      <!-- Hidden message (opens when checkbox is checked) -->
-      <div class="message">
-        <h2>Dear Sahifa🩷,</h2>
-        <p>
-          Wishing you a birthday filled with love, laughter and beautiful
-          memories. You are so special to me and I’m really happy to celebrate
-          your day in this small way...💖......
-          I wish you a happy and sweet life. I pray to God that you achieve your
-         goals and fulfill your dreams. I want to see you always happy, Maa. 💚😍"
-         ...[meray c kyathoo galthiaa hithoo maaf karoo maa mjh...ajj thumakuu sathatha nee 
-         loo maa....kyatha gussa may bolkoo hithoo maaf karoo...iam really sry maa...🥹]
-        </p>
-        <p class="from">
-          With lots of love,<br />
-          sameer{سمير} 💙
-        </p>
       </div>
 
+      <!-- Balloons -->
+      <div class="balloons" id="balloons">
+        <div class="balloon b1"></div>
+        <div class="balloon b2"></div>
+        <div class="balloon b3"></div>
+        <div class="balloon b4"></div>
+        <div class="balloon b5"></div>
+      </div>
+
+      <!-- Message & photo -->
+      <div class="message" id="message">
+        <img src="syeda2.jpg" alt="Birthday Girl" class="photo" />
+        
+        <h2>Many Many Happy Returns of the Day Sahifa🩷🎂</h2>
+        <p>
+          May your day be filled with smiles, surprises, happiness and lots of
+          beautiful moments. You are very special to me 💖.. I wish you a happy and sweet life. I pray to God that you achieve your
+         goals and fulfill your dreams. I want to see you always happy Maa... 💚😍"
+         ..
+        </p>
+      </div>
     </div>
   </div>
 
-  <!-- Small script to play music when gift is tapped -->
+  <!-- Background song (plays when box opens) -->
+  <audio id="song">
+    <source src="khoobsurat.mp3" type="audio/mpeg" />
+  </audio>
+
   <script>
-    function playMusic() {
-      const audio = document.getElementById("bg-music");
-      // Play only if not already playing
-      if (audio && audio.paused) {
-        audio.volume = 1.0;
-        audio.play().catch(function (err) {
-          // Ignore errors (some browsers block until user interacts more)
-          console.log(err);
-        });
-      }
-    }
+    const giftBox   = document.getElementById("giftBox");
+    const balloons  = document.getElementById("balloons");
+    const message   = document.getElementById("message");
+    const song      = document.getElementById("song");
+
+    let opened = false;
+
+    giftBox.addEventListener("click", () => {
+      if (opened) return;
+      opened = true;
+
+      giftBox.classList.add("open");
+      balloons.classList.add("show");
+      message.classList.add("show");
+
+      // try to play the song when user clicks
+      song.play().catch(() => {});
+    });
   </script>
 </body>
 </html>
