@@ -1,0 +1,85 @@
+       <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Birthday 🎉صَحِیفَہ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Background music (put song.mp3 in same folder) -->
+  <audio id="bg-music" src="khoobsurat.mp3"></audio>
+
+  <!-- Hidden checkbox to control open/close of gift -->
+  <input type="checkbox" id="open-gift" class="hidden-checkbox" />
+
+  <div class="page">
+
+    <!-- Floating balloons -->
+    <div class="balloon balloon-1"></div>
+    <div class="balloon balloon-2"></div>
+    <div class="balloon balloon-3"></div>
+
+    <div class="card">
+
+      <!-- TWO IMAGES -->
+      <div class="photos-row">
+        <div class="photo-container">
+          <!-- Birthday girl photo -->
+          <img src="syeda2.jpg" class="girl-photo" alt="Photo 1" />
+        </div>
+
+        <div class="photo-container">
+          <!-- Your photo or second pic -->
+          <img src="syeda1.jpg" class="girl-photo" alt="Photo 2" />
+        </div>
+      </div>
+
+      <h1>🎂 Happy Birthday! Sahifa..🥰🥰 🎂</h1>
+      <p class="small-text">A special surprise just for you…maa🥰</p>
+
+      <!-- Gift box (also starts music on click) -->
+      <label for="open-gift" class="gift-box" onclick="playMusic()">
+        <div class="lid"></div>
+        <div class="box"></div>
+        <span class="tap-text">Tap to open 🎁</span>
+      </label>
+
+      <!-- Hidden message (opens when checkbox is checked) -->
+      <div class="message">
+        <h2>Dear Sahifa🩷,</h2>
+        <p>
+          Wishing you a birthday filled with love, laughter and beautiful
+          memories. You are so special to me and I’m really happy to celebrate
+          your day in this small way...💖......
+          I wish you a happy and sweet life. I pray to God that you achieve your
+         goals and fulfill your dreams. I want to see you always happy, Maa. 💚😍"
+         ...[meray c kyathoo galthiaa hithoo maaf karoo maa mjh...ajj thumakuu sathatha nee 
+         loo maa....kyatha gussa may bolkoo hithoo maaf karoo...iam really sry maa...🥹]
+        </p>
+        <p class="from">
+          With lots of love,<br />
+          sameer{سمير} 💙
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Small script to play music when gift is tapped -->
+  <script>
+    function playMusic() {
+      const audio = document.getElementById("bg-music");
+      // Play only if not already playing
+      if (audio && audio.paused) {
+        audio.volume = 1.0;
+        audio.play().catch(function (err) {
+          // Ignore errors (some browsers block until user interacts more)
+          console.log(err);
+        });
+      }
+    }
+  </script>
+</body>
+</html>
